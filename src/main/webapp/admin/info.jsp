@@ -7,6 +7,48 @@
 <script type="text/javascript">
     SyntaxHighlighter.all();
 </script>
+
+<script type="text/javascript">
+ 	// 点赞
+ 	function addDianzan(id) {
+ 	
+ 	var flag = 0;
+ 	
+ 	var value=parseInt(document.getElementById("diggnum").innerHTML);
+	var text = document.getElementById("dianzan").innerHTML;
+	
+	if (text == " 很赞哦  ") {
+		value=value + 1;
+		flag = 1;	
+	}
+	else {
+		value=value - 1;
+		flag = 2;	
+	}
+		
+ 	$.ajax({ //一个Ajax过程
+ 			type: "post", //以post方式与后台沟通
+ 			url : "/blog/dianzan?id=" + id + "&value="+value, 
+ 			dataType:'json',
+ 			data: {"value":value,"id":id}, 
+ 			success: function(result) {
+				if (result.success) {
+					document.getElementById("diggnum").innerHTML=value;
+					if (flag == 1) 
+						document.getElementById("dianzan").innerHTML=" 取消赞  ";
+					else if (flag == 2)
+						document.getElementById("dianzan").innerHTML=" 很赞哦  ";
+					else {
+						
+					}
+				}
+				else {
+					alert("失败");
+				}
+ 			}
+ 		});
+	}
+</script>
 <article>
   <h1 class="t_nav"><span>您现在的位置是：首页 > 慢生活 > 程序人生</span><a href="/" class="n1">网站首页</a><a href="/" class="n2">慢生活</a></h1>
   <div class="infosbox">
@@ -25,7 +67,7 @@
       		${Blog.content }
     </div>
     <div class="share">
-      <p class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=3&amp;id=19&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggnum','EchoReturnedText','GET','');"> 很赞哦！ </a>(<b id="diggnum"><script type="text/javascript" src="/e/public/ViewClick/?classid=2&id=20&down=5"></script>${Blog.likes }</b>)</p>
+      <p class="diggit"><a id="dianzan" href="JavaScript:addDianzan(${Blog.id });"> 很赞哦  </a>(<b id="diggnum">${Blog.likes }</b>)</p>
       <p class="dasbox"><a href="javascript:void(0)" onClick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏本站</a></p>
       <div class="hide_box"></div>
       <div class="shang_box"> <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">关闭</a>

@@ -84,5 +84,9 @@
 						keyWord=#{keyWord}, blogType_id=#{blogType.id} where id=#{id}
 	</update>
 	
+	<update id="updateBlogLikes" parameterType="java.lang.Integer">
+		update blog set likes=#{value} where id=#{id} 
+	</update>
+	
 
 </mapper>

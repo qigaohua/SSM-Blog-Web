@@ -34,4 +34,7 @@ public interface BlogService {
 	public Blog findPreBlog(Integer id);
 	/* 发现下一篇博客 */
 	public Blog findAfterBlog(Integer id);
+	
+	/* 更新点赞数 */
+	public Integer modifyBlogLikes(Integer id, Integer value);
 }

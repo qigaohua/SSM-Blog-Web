@@ -129,4 +129,9 @@ public class BlogServiceImpl implements BlogService {
 		return blogDao.getAfterBlogById(id);
 	}
 
+	public Integer modifyBlogLikes(Integer id, Integer value) {
+		// TODO Auto-generated method stub
+		return blogDao.updateBlogLikes(id, value);
+	}
+
 }

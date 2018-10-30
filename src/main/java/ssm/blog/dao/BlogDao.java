@@ -45,4 +45,7 @@ public interface BlogDao {
 	public Blog getPreBlogById(Integer id);
 	/* 根据获取id获取下一篇blog */
 	public Blog getAfterBlogById(Integer id);
+	
+	/* 根据id更新blog点赞数量 */
+	public Integer updateBlogLikes(@Param("id") Integer id, @Param("value") Integer value);
 }
