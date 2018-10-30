@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="ssm.blog.dao.BlogDao">
+
+	<resultMap type="Blog" id="blogResultMap">
+		<id column="id" property="id"/>
+		<result column="title" property="title"/>
+		<result column="summary" property="summary"/>
+		<result column="content" property="content"/>
+		<result column="releaseDate" property="releaseDate"/>
+		<result column="updateDate" property="updateDate"/>
+		<result column="keyWord" property="keyWord"/>
+		<result column="clickHit" property="clickHit"/>
+		<result column="likes" property="likes"/>
+		
+		<association property="blogType" column="blogType_id" select="ssm.blog.dao.BlogTypeDao.getBlogTypeById">
+		
+		</association>
+	</resultMap>
+	
+	<select id="getAllBlogs" resultMap="blogResultMap">
+		select id, title, releaseDate from  blog
+	</select>
+
+	<select id="getBlogPage" parameterType="Map" resultMap="blogResultMap">
+		select id, title, summary, releaseDate, updateDate, keyWord, clickHit, likes, blogType_id  from blog
+		<where>
+			<if test="title != null and title != ''">
+				title like "%"#{title}"%"
+			</if>
+		</where> 
+	
+		ORDER BY releaseDate DESC limit #{start}, #{end}
+	</select>
+	
+	<select id="getBlogById" parameterType="java.lang.Integer" resultMap="blogResultMap">
+		select * from blog where id=#{id}
+	</select>
+	
+	<select id="getBlogTotal" resultType="Long">
+		select count(id) from blog
+	</select>
+	
+	<select id="getBlogsByClickhit" resultMap="blogResultMap">
+		select id, title from blog order by clickHit desc limit 5
+	</select>
+	
+	<select id="getBlogsByLikes" resultMap="blogResultMap">
+		select id, title from blog order by likes desc limit 5
+	</select>
+	
+	<select id="getClassifyBlogs" parameterType="java.lang.Integer" resultMap="blogResultMap">
+		select id, title, summary, releaseDate, updateDate, clickHit, likes, blogType_id 
+		from blog where blogType_id=#{blogTypeId} 
+	</select>
+	
+	<!-- 根据id获取上一篇博客 -->
+	<select id="getPreBlogById" parameterType="java.lang.Integer" resultMap="blogResultMap">
+		select id, title from blog where id &lt; #{id} ORDER BY id DESC limit 1
+	</select>
+	
+	<!-- 根据id获取下一篇博客 -->
+	<select id="getAfterBlogById" parameterType="java.lang.Integer" resultMap="blogResultMap">
+		select id, title from blog where id &gt; #{id}  limit 1
+	</select>
+	
+	<delete id="delBlogById" parameterType="java.lang.Integer">
+		delete from blog where id=#{id}
+	</delete>
+	
+	<insert id="insertBlog" parameterType="Blog">
+		insert into blog (title, summary, content, releaseDate, updateDate, keyWord, clickHit, likes, blogType_id)
+				values (#{title}, #{summary}, #{content}, now(), now(), #{keyWord}, 0, 0, #{blogType.id})
+				
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+	</insert>
+	
+	<update id="updateBlog" parameterType="Blog">
+		update blog set title=#{title}, summary=#{summary}, content=#{content}, updateDate=now(), 
+						keyWord=#{keyWord}, blogType_id=#{blogType.id} where id=#{id}
+	</update>
+	
+
+</mapper>

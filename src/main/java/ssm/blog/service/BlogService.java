@@ -1,0 +1,37 @@
+/**
+ * 
+ */
+package ssm.blog.service;
+
+import java.util.List;
+
+import ssm.blog.entity.Blog;
+import ssm.blog.entity.PageCommon;
+
+/**
+ * @Desc   //博客管理接口 
+ * @Author 齐高华
+ *
+ * @Date 2018年10月16日 下午11:51:38
+ */
+public interface BlogService {
+	public List<Blog> listAllBlogs();
+	
+	public PageCommon<Blog> listBlogPage(String title, PageCommon<Blog> pageCommon);
+	public PageCommon<Blog> listBlogPage(PageCommon<Blog> pageCommon);
+	public Integer deleteBlog(Integer id);
+	public Integer saveBlog(Blog blog);
+	public Long getBlogTotal();
+	public Blog getBlog(Integer id);
+	public Integer modifyBlog(Blog blog);
+	
+
+	public List<Blog> listClassifyBlogs(Integer blogTypeId);
+	public List<Blog> listBlogOfClickhit();
+	public List<Blog> listBlogOfLikes();
+	
+	/* 发现上一篇博客 */
+	public Blog findPreBlog(Integer id);
+	/* 发现下一篇博客 */
+	public Blog findAfterBlog(Integer id);
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+  
+    <!-- securityManager 安全管理器 -->  
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
+        <property name="realm" ref="myRealm" /> 
+        <property name="cacheManager" ref="cacheManager"/> 
+    </bean>  
+    
+    <!-- 
+     shiro的缓冲是被shiro的缓冲管理器所管理的，即CacheManage，Shiro的用户认证是没有提供缓冲机制的，
+              因为每次登陆一次查询一次数据库比对一下用户名密码，做缓冲的必要几乎是没有的。但是shiro的授权将会是大量的数据，
+     shiro的授权缓冲是默认开启的，接下来我们将对shiro的缓冲使用EhCache来管理，之后授权时只有用户第一次访问
+              系统的时候会走realm查数据库，之后就会走缓冲。
+     -->
+    
+    
+    <!-- 缓存管理器 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+    	<property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>
+    </bean>
+ 
+    <!-- 自定义Realm实现 --> 
+    <bean id="myRealm" class="ssm.blog.service.BlogRealm" />  
+    
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+    <bean id="loginFormAuthenticationFilter" class="ssm.blog.service.MyLoginFormAuthenticationFilter" >
+    	<property name="loginUrl" value="/toLogin"/>
+    </bean>  
+
+
+	 <!-- Shiro Filter 拦截器相关配置 -->  
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">  
+        <!-- securityManager -->  
+        <property name="securityManager" ref="securityManager" />  
+        <!-- 登录路径 -->  
+        <property name="loginUrl" value="/toLogin" />  
+        <property name="successUrl" value="/index" />
+        <!-- 用户访问无权限的链接时跳转此页面  -->  
+        <property name="unauthorizedUrl" value="/123.jsp" />  
+        
+                
+		<property name="filters">                                                                               
+         <map>                                                                                                
+             <entry key="authc" value-ref="loginFormAuthenticationFilter"/>                                   
+         </map>                                                                                               
+     	</property> 
+        
+        <!-- 过滤链定义 -->  
+        <property name="filterChainDefinitions">  
+            <value>  
+            	/login=anon
+            	/register=anon
+            	/toLogin=authc
+            	/static/loginPages/css/**=anon 
+                /static/loginPages/images/**=anon
+                /static/loginPages/js/**=anon 
+                /static/loginPages/fonts/**=anon 
+                
+                /static/blogPages/css/**=anon 
+                /static/blogPages/images/**=anon
+                /static/blogPages/js/**=anon 
+                
+               <!-- /userList=roles[admin] -->
+               <!-- /userList=authc,perms[/userList] -->
+               
+               	/menu=roles[Boss]
+                /** = authc
+             </value>  
+        </property>  
+    </bean>  
+    
+    <!-- 开启shiro注解支持 -->
+    <bean
+        class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager" />
+    </bean>
+
+
+       
+</beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="ssm.blog.dao.BlogerDao" >
+
+
+	
+	<sql id="BlogerColumns">
+		id, username, password, profile, nickname, sign, imagename
+	</sql>
+	
+	<select id="getBlogerData" parameterType="int" resultType="ssm.blog.entity.Bloger">
+		select <include refid="BlogerColumns" /> from bloger where id=#{id}
+	</select>
+
+</mapper>
+
+
+
+        
+        

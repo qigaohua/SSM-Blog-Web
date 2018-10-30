@@ -1,0 +1,122 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<!-- <meta charset="gbk"> -->
+<title>首页_FlyQi个人博客 </title>
+<meta name="keywords" content="个人博客, FlyQi" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/blog/static/blogPages/css/base.css" rel="stylesheet">
+<link href="/blog/static/blogPages/css/index.css" rel="stylesheet">
+<link href="/blog/static/blogPages/css/m.css" rel="stylesheet">
+<script src="/blog/static/blogPages/js/jquery.min.js" type="text/javascript"></script>
+<script src="/blog/static/blogPages/js/jquery.easyfader.min.js"></script>
+<script src="/blog/static/blogPages/js/scrollReveal.js"></script>
+<script src="/blog/static/blogPages/js/common.js"></script>
+<script src="/blog/static/blogPages/js/page.js"></script>
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+
+</head>
+<body >
+<header> 
+  <!--menu begin-->
+  <div class="menu">
+    <nav class="nav" id="topnav">
+      <h1 class="logo"><a href="${pageContext.request.contextPath}/index">FlyQi博客</a></h1>
+      <li><a href="${pageContext.request.contextPath}/index">网站首页</a> </li>
+      <li><a href="${pageContext.request.contextPath}/about">关于我</a> </li>
+<!--       
+	  <li><a href="share.html">模板分享</a>
+        <ul class="sub-nav">
+          <li><a href="share.html">个人博客模板</a></li>
+          <li><a href="share.html">国外Html5模板</a></li>
+          <li><a href="share.html">企业网站模板</a></li>
+        </ul>
+      </li>
+ -->      
+ 		<li><a href="">学无止境</a>
+        <ul class="sub-nav">
+          <li><a href="list.html">编程语言</a></li>
+          <li><a href="list.html">操作系统</a></li>
+          <li><a href="list.html">系统运维</a></li>
+          <li><a href="list.html">优秀文章</a></li>
+        </ul>
+      </li>
+      <li><a href="life.html">慢生活</a>
+        <ul class="sub-nav">
+          <li><a href="life.html">日记</a></li>
+          <li><a href="life.html">欣赏</a></li>
+          <li><a href="life.html">程序人生</a></li>
+          <li><a href="life.html">经典语录</a></li>
+        </ul>
+      </li>
+      <li><a href="${pageContext.request.contextPath}/time">时间轴</a> </li>
+      <li><a href="${pageContext.request.contextPath}/leaveWord">留言</a> </li>
+      <li><a href="${pageContext.request.contextPath}/menu">博客后台管理</a> </li>
+      <!--search begin-->
+      <div id="search_bar" class="search_bar">
+        <form  id="searchform" action="[!--news.url--]e/search/index.php" method="post" name="searchform">
+          <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard">
+          <input type="hidden" name="show" value="title" />
+          <input type="hidden" name="tempid" value="1" />
+          <input type="hidden" name="tbname" value="news">
+          <input type="hidden" name="Submit" value="搜索" />
+          <span class="search_ico"></span>
+        </form>
+      </div>
+      <!--search end--> 
+    </nav>
+  </div>
+  <!--menu end--> 
+  <!--mnav begin-->
+  <div id="mnav">
+    <h2><a href="${pageContext.request.contextPath}/index" class="mlogo">FlyQi博客</a><span class="navicon"></span></h2>
+    <dl class="list_dl">
+      <dt class="list_dt"> <a href="index.html">网站首页</a> </dt>
+      <dt class="list_dt"> <a href="about.html">关于我</a> </dt>
+      
+<!--  <dt class="list_dt"> <a href="#">模板分享</a> </dt>
+      <dd class="list_dd">
+        <ul>
+          <li><a href="share.html">个人博客模板</a></li>
+          <li><a href="share.html">国外Html5模板</a></li>
+          <li><a href="share.html">企业网站模板</a></li>
+        </ul>
+      </dd> 
+-->
+      <dt class="list_dt"> <a href="#">学无止境</a> </dt>
+      <dd class="list_dd">
+        <ul>
+          <li><a href="list.html">编程语言</a></li>
+          <li><a href="list.html">操作系统</a></li>
+          <li><a href="list.html">系统运维</a></li>
+          <li><a href="list.html">优秀文章</a></li>
+        </ul>
+      </dd>
+      <dt class="list_dt"> <a href="#">慢生活</a> </dt>
+      <dd class="list_dd">
+        <ul>
+          <li><a href="life.html">日记</a></li>
+          <li><a href="life.html">欣赏</a></li>
+          <li><a href="life.html">程序人生</a></li>
+          <li><a href="life.html">经典语录</a></li>
+        </ul>
+      </dd>
+      <dt class="list_dt"> <a href="time.html">时间轴</a> </dt>
+      <dt class="list_dt"> <a href="gbook.html">留言</a> </dt>
+      <dt class="list_dt"> <a href="gbook.html">博客后台管理</a> </dt>
+    </dl>
+  </div>
+  <!--mnav end--> 
+</header>

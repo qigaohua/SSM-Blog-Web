@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       
+       <context:component-scan base-package="ssm.blog.controller" />
+       
+       <mvc:annotation-driven />
+       
+       <mvc:resources location="/static/jquery-easyui-1.6.6/themes/" mapping="/static/jquery-easyui-1.6.6/themes/**" />
+	   <mvc:resources location="/static/jquery-easyui-1.6.6/themes/default/" mapping="/static/jquery-easyui-1.6.6/themes/default/**" />
+	   <mvc:resources location="/static/jquery-easyui-1.6.6/" mapping="/static/jquery-easyui-1.6.6/**" />
+	   <mvc:resources location="/static/jquery-easyui-1.6.6/" mapping="/static/jquery-easyui-1.6.6/**" />
+	   <mvc:resources location="/static/jquery-easyui-1.6.6/locale/" mapping="/static/jquery-easyui-1.6.6/locale/**" />
+	   
+	   <mvc:resources location="/static/UEditor_1433/" mapping="/static/UEditor_1433/**" />
+	   <mvc:resources location="/static/UEditor_1433/lang/zh-cn/" mapping="/static/UEditor_1433/lang/zh-cn/**" />
+	   
+	   
+	   <mvc:resources location="/static/blogPages/css/" mapping="/static/blogPages/css/**" />
+	   <mvc:resources location="/static/blogPages/js/" mapping="/static/blogPages/js/**" />
+	   <mvc:resources location="/static/blogPages/images/" mapping="/static/blogPages/images/**" />
+	   
+	   <mvc:resources location="/static/loginPages/css/" mapping="/static/loginPages/css/**" />
+	   <mvc:resources location="/static/loginPages/js/" mapping="/static/loginPages/js/**" />
+	   <mvc:resources location="/static/loginPages/images/" mapping="/static/loginPages/images/**" />
+	   <mvc:resources location="/static/loginPages/fonts/" mapping="/static/loginPages/fonts/**" />
+       
+       <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+       		<property name="prefix" value="/admin/" />
+       		<property name="suffix" value=".jsp"/>
+       </bean>
+       
+</beans>
