@@ -43,7 +43,7 @@
         <property name="loginUrl" value="/toLogin" />  
         <property name="successUrl" value="/index" />
         <!-- 用户访问无权限的链接时跳转此页面  -->  
-        <property name="unauthorizedUrl" value="/123.jsp" />  
+        <property name="unauthorizedUrl" value="/static/blogPages/permission.html" />  
         
                 
 		<property name="filters">                                                                               
