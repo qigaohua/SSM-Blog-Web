@@ -36,6 +36,11 @@
 	   <mvc:resources location="/static/loginPages/images/" mapping="/static/loginPages/images/**" />
 	   <mvc:resources location="/static/loginPages/fonts/" mapping="/static/loginPages/fonts/**" />
        
+       <!-- 上传文件 -->
+       <mvc:resources location="/static/upload/image/" mapping="/static/upload/image/**" />
+       
+       
+       
        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
        		<property name="prefix" value="/admin/" />
        		<property name="suffix" value=".jsp"/>
