@@ -117,14 +117,14 @@ public class BlogTypeController {
 	@RequestMapping(value="deleteBlogType")
 	public String deleteBlogType(@RequestParam(value="idsStr") String idsStr, HttpServletResponse response) {
 		String[] ids = idsStr.split(",");
-		System.out.println(idsStr);
+		
+		/*System.out.println(idsStr);*/
 		
 		JSONObject result = new JSONObject();
 		
 		for (int i = 0; i < ids.length; i ++) {
 			// TODO 判断这个id的博客类型下是否有博客，没有就删除
-			int id = Integer.parseInt(ids[0]);
-			System.out.println(id);
+			int id = Integer.parseInt(ids[i]);
 			blogTypeServiceImpl.deleteBlogType(id);
 		}
 		result.put("success", true);
