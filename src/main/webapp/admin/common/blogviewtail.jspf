@@ -1,7 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
  	<!--blogsbox end-->
   <div class="sidebar" >
-    <div class="zhuanti">
+  
+<%--     
+	<div class="zhuanti">
       <h2 class="hometitle">博客分类</h2>
       <ul id="blogul">
 	  	<c:forEach items="${blogTypeList }" var="blogType">
@@ -11,64 +15,77 @@
         </c:forEach>
 <!--         <li><p style="color:red;font-size:16px;">展开<span><a href="/">进入</a></span> </p></li> -->
       </ul>
+    </div> 
+--%>
+    
+    <div class="tuijian">
+      <h2 class="hometitle">博客分类</h2>
+      <ul class="sidenews">
+      	<c:forEach items="${blogTypeList }" var="blogType">
+       	 	<li > <!-- <i><img src="/blog/static/blogPages/images/blog2.jpg"></i> -->
+       	 	     <p><a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blogType.id }">${blogType.typeName } </a></p>
+        	</li>
+        </c:forEach>
+ 	  </ul>
     </div>
+    
     <div class="tuijian">
       <h2 class="hometitle">博客推荐</h2>
       <ul class="tjpic">
-        <i><img src="/blog/static/blogPages/images/toppic01.jpg"></i>
+        <i><img src="/blog/static/blogPages/images/blog2.jpg"></i>
         <p><a href="/blog/blogview?id=${blogLikesList[0].id }">${blogLikesList[0].title }</a></p>
       </ul>
       <ul class="sidenews">
-        <li> <i><img src="/blog/static/blogPages/images/toppic01.jpg"></i>
+        <li> <i><img src="/blog/static/blogPages/images/blog3.jpg"></i>
           <p><a href="/blog/blogview?id=${blogLikesList[1].id }">${blogLikesList[1].title }</a></p>
-          <span>2018-05-13</span> </li>
-        <li> <i><img src="/blog/static/blogPages/images/toppic02.jpg"></i>
+          <span><fmt:formatDate value="${blogLikesList[1].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
+        <li> <i><img src="/blog/static/blogPages/images/blog4.jpg"></i>
           <p><a href="/blog/blogview?id=${blogLikesList[2].id }">${blogLikesList[2].title }</a></p>
-          <span>2018-05-13</span> </li>
+          <span><fmt:formatDate value="${blogLikesList[2].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
         <li> <i><img src="/blog/static/blogPages/images/v1.jpg"></i>
           <p><a href="/blog/blogview?id=${blogLikesList[3].id }">${blogLikesList[3].title }</a></p>
-          <span>2018-05-13</span> </li>
+          <span><fmt:formatDate value="${blogLikesList[3].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
         <li> <i><img src="/blog/static/blogPages/images/v2.jpg"></i>
           <p><a href="/blog/blogview?id=${blogLikesList[4].id }">${blogLikesList[4].title }</a></p>
-          <span>2018-05-13</span> </li>
+          <span><fmt:formatDate value="${blogLikesList[4].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
  	  </ul>
     </div>
     <div class="tuijian">
       <h2 class="hometitle">点击排行</h2>
       <ul class="tjpic">
-        <i><img src="/blog/static/blogPages/images/toppic01.jpg"></i>
+        <i><img src="/blog/static/blogPages/images/blog4.jpg"></i>
         <p><a href="/blog/blogview?id=${blogClickhitList[0].id }">${blogClickhitList[0].title }</a></p>
       </ul>
       <ul class="sidenews">
-        <li> <i><img src="/blog/static/blogPages/images/toppic01.jpg"></i>
+        <li> <i><img src="/blog/static/blogPages/images/blog3.jpg"></i>
           <p><a href="/blog/blogview?id=${blogClickhitList[1].id }">${blogClickhitList[1].title }</a></p>
-          <span>2018-05-13</span> </li>
-        <li> <i><img src="/blog/static/blogPages/images/toppic02.jpg"></i>
+          <span><fmt:formatDate value="${blogClickhitList[1].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
+        <li> <i><img src="/blog/static/blogPages/images/blog2.jpg"></i>
           <p><a href="/blog/blogview?id=${blogClickhitList[2].id }">${blogClickhitList[2].title }</a></p>
-          <span>2018-05-13</span> </li>
+          <span><fmt:formatDate value="${blogClickhitList[2].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
         <li> <i><img src="/blog/static/blogPages/images/v1.jpg"></i>
           <p><a href="/blog/blogview?id=${blogClickhitList[3].id }">${blogClickhitList[3].title }</a></p>
-          <span>2018-05-13</span> </li>
+          <span><fmt:formatDate value="${blogClickhitList[3].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
         <li> <i><img src="/blog/static/blogPages/images/v2.jpg"></i>
           <p><a href="/blog/blogview?id=${blogClickhitList[4].id }">${blogClickhitList[4].title }</a></p>
-          <span>2018-05-13</span> </li>
+          <span><fmt:formatDate value="${blogClickhitList[4].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
  	  </ul>
     </div>
     <div class="cloud">
       <h2 class="hometitle">标签云</h2>
       <ul>
-        <a href="/">陌上花开</a> 
-        <a href="/">校园生活</a> 
-        <a href="/">html5</a> 
-        <a href="/">SumSung</a> 
-        <a href="/">青春</a> 
-        <a href="/">温暖</a> 
-        <a href="/">阳光</a> 
-        <a href="/">三星</a>
-        <a href="/">索尼</a> 
-        <a href="/">华维荣耀</a> 
-        <a href="/">三星</a> 
-        <a href="/">索尼</a>
+        <a href="#">陌上花开</a> 
+        <a href="#">校园生活</a> 
+        <a href="#">html5</a> 
+        <a href="#">SumSung</a> 
+        <a href="#">青春</a> 
+        <a href="#">温暖</a> 
+        <a href="#">阳光</a> 
+        <a href="#">三星</a>
+        <a href="#">索尼</a> 
+        <a href="#">华维荣耀</a> 
+        <a href="#">三星</a> 
+        <a href="#">索尼</a>
       </ul>
     </div>
     <div class="links">
@@ -82,18 +99,18 @@
     <div class="guanzhu" id="follow-us">
       <h2 class="hometitle">关注我们 么么哒！</h2>
       <ul>
-        <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>FlyQi 博客</a></li>
-        <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span>FlyQi 博客</a></li>
-        <li class="qq"><a href="/" target="_blank"><span>QQ号</span>1969555431</a></li>
-        <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span>qigaohua168@163.com</a></li>
-        <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span>qgh_1959555431</a></li>
+        <li class="sina"><a href="#" target="_blank"><span>新浪微博</span>FlyQi 博客</a></li>
+        <li class="tencent"><a href="#" target="_blank"><span>腾讯微博</span>FlyQi 博客</a></li>
+        <li class="qq"><a href="#" target="_blank"><span>QQ号</span>1969555431</a></li>
+        <li class="email"><a href="#" target="_blank"><span>邮箱帐号</span>qigaohua168@163.com</a></li>
+        <li class="wxgzh"><a href="#" target="_blank"><span>微信号</span>qgh_1959555431</a></li>
         <li class="wx"><img src="/blog/static/blogPages/images/wx.jpg"></li>
       </ul>
     </div>
   </div>
 </article>
 <footer>
-  <p>Design by <a href="http://www.yangqq.com" target="_blank">杨青个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+  <p><a href="#" target="_blank">FlyQi 个人博客</a> <a href="#">蜀ICP备11002373号-1</a></p>
 </footer>
 <a href="#" class="cd-top">Top</a>
 

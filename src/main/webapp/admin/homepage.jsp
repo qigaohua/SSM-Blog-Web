@@ -40,9 +40,9 @@
  <div class="picsbox"> 
   <div class="banner">
     <div id="banner" class="fader">
-      <li class="slide" ><a href="/" target="_blank"><img src="/blog/static/blogPages/images/banner01.jpg"><span class="imginfo">风起于青萍之末，浪成于微澜之间 !</span></a></li>
-      <li class="slide" ><a href="/" target="_blank"><img src="/blog/static/blogPages/images/banner02.jpg"><span class="imginfo">三分天赋可入津， 七分勤奋入桃园 。</span></a></li>
-      <li class="slide" ><a href="/" target="_blank"><img src="/blog/static/blogPages/images/banner03.jpg"><span class="imginfo">个人博客，属于我的小世界！</span></a></li>
+      <li class="slide" ><a href="#" target="_blank"><img src="/blog/static/blogPages/images/banner01.jpg"><span class="imginfo">风起于青萍之末，浪成于微澜之间 !</span></a></li>
+      <li class="slide" ><a href="#" target="_blank"><img src="/blog/static/blogPages/images/blog6.jpg"><span class="imginfo">三分天赋可入津， 七分勤奋入桃园 。</span></a></li>
+      <li class="slide" ><a href="#" target="_blank"><img src="/blog/static/blogPages/images/banner03.jpg"><span class="imginfo">个人博客，属于我的小世界！</span></a></li>
       <div class="fader_controls">
         <div class="page prev" data-target="prev">&lsaquo;</div>
         <div class="page next" data-target="next">&rsaquo;</div>
@@ -53,10 +53,10 @@
   </div>
   <!--banner end-->
   <div class="toppic">
-    <li> <a href="/" target="_blank"> <i><img src="/blog/static/blogPages/images/toppic01.jpg"></i>
+    <li> <a href="#" target="_blank"> <i><img src="/blog/static/blogPages/images/blog4.jpg"></i>
       <h2>别让这些闹心的套路，毁了你的网页设计!</h2>
       <span>学无止境</span> </a> </li>
-    <li> <a href="/" target="_blank"> <i><img src="/blog/static/blogPages/images/zd01.jpg"></i>
+    <li> <a href="#" target="_blank"> <i><img src="/blog/static/blogPages/images/blog2.jpg"></i>
       <h2>个人博客，属于我的小世界！</h2>
       <span>学无止境</span> </a> </li>
   </div>
@@ -64,6 +64,7 @@
   <div class="blank"></div>
   <!--blogsbox begin-->
   <div class="blogsbox">
+  
 <!--     <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
       <h3 class="blogtitle"><a href="/" target="_blank">别让这些闹心的套路，毁了你的网页设计!</a></h3>
       <span class="blogpic"><a href="/" title=""><img src="/blog/static/blogPages/images/toppic01.jpg" alt=""></a></span>
@@ -82,17 +83,17 @@
 	<c:forEach items="${pageBlog.result }" var="blog">
 	 <div class="blogs" data-scroll-reveal="enter bottom  over 1s" >
 	      <h3 class="blogtitle"><a href="${pageContext.request.contextPath}/blogview?id=${blog.id }" target="_blank" >${blog.title }</a></h3>
-	      <span class="blogpic"><a href="/" title="">
+	      <span class="blogpic"><a href="#" title="">
 	      	<img src="${pageContext.request.contextPath}/static/blogPages/images/blog${blog.id % 6 }.jpg" alt=""></a>
 	      </span>
 	      <p class="blogtext">${blog.summary }</p>
 	      <div class="bloginfo">
 	        <ul>
-	          <li class="author"><a href="/">FlyQi</a></li>
-	          <li class="lmname"><a href="/">${blog.blogType.typeName }</a></li>
+	          <li class="author"><a href="#">FlyQi</a></li>
+	          <li class="lmname"><a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blog.blogType.id }">${blog.blogType.typeName }</a></li>
 	          <li class="timer"><fmt:formatDate value="${blog.releaseDate }" pattern="yyyy-MM-dd" /></li>
 	          <li class="view">${blog.clickHit } 已阅读</li>
-	          <li class="like">9999</li>
+	          <li class="like">${blog.likes }</li>
 	        </ul>
 	      </div>
 	  </div>

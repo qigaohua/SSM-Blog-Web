@@ -56,11 +56,11 @@
       <h3 class="news_title">${Blog.title }</h3>
       <div class="bloginfo">
         <ul>
-          <li class="author"><a href="/">FlyQi</a></li>
-          <li class="lmname"><a href="/">${Blog.blogType.typeName }</a></li>
+          <li class="author"><a href="#">FlyQi</a></li>
+          <li class="lmname"><a href="${pageContext.request.contextPath}/listClassifyBlog?id=${Blog.blogType.id }">${Blog.blogType.typeName }</a></li>
           <li class="timer"><fmt:formatDate value="${Blog.releaseDate }" pattern="yyyy-MM-dd" /></li>
           <li class="view">${Blog.clickHit } 已阅读</li>
-          <li class="like">8888888</li>
+          <li class="like">${Blog.likes }</li>
         </ul>
       </div>
       <div class="tags"><a href="/" target="_blank">个人博客</a> &nbsp; <a href="/" target="_blank">小世界</a></div>

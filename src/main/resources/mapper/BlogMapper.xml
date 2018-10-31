@@ -44,11 +44,11 @@
 	</select>
 	
 	<select id="getBlogsByClickhit" resultMap="blogResultMap">
-		select id, title from blog order by clickHit desc limit 5
+		select id, title, releaseDate from blog order by clickHit desc limit 5
 	</select>
 	
 	<select id="getBlogsByLikes" resultMap="blogResultMap">
-		select id, title from blog order by likes desc limit 5
+		select id, title, releaseDate from blog order by likes desc limit 5
 	</select>
 	
 	<select id="getClassifyBlogs" parameterType="java.lang.Integer" resultMap="blogResultMap">
