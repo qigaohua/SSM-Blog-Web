@@ -134,4 +134,8 @@ public class BlogServiceImpl implements BlogService {
 		return blogDao.updateBlogLikes(id, value);
 	}
 
+	public Integer addBlogClickhit(Integer id) {
+		return blogDao.updateBlogclickHit(id);
+	}
+
 }

@@ -37,4 +37,7 @@ public interface BlogService {
 	
 	/* 更新点赞数 */
 	public Integer modifyBlogLikes(Integer id, Integer value);
+	
+	/* 增加浏览量 +1 */
+	public Integer addBlogClickhit(Integer id);
 }

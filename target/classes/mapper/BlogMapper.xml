@@ -84,9 +84,14 @@
 						keyWord=#{keyWord}, blogType_id=#{blogType.id} where id=#{id}
 	</update>
 	
+	<!-- 根据id更新blog点赞数量  -->
 	<update id="updateBlogLikes" parameterType="java.lang.Integer">
 		update blog set likes=#{value} where id=#{id} 
 	</update>
 	
+	<!-- 根据id更新blog点击量+1  -->
+	<update id="updateBlogclickHit" parameterType="java.lang.Integer">
+		update blog set clickHit=clickHit+1 where id=#{id}
+	</update>
 
 </mapper>

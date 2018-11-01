@@ -20,7 +20,7 @@ import ssm.blog.entity.Blog;
 import ssm.blog.service.BlogServiceImpl;
 
 /**
- * @Desc   //TODO 添加描述 
+ * @Desc   博客内容web显示相关功能类
  * @Author 齐高华
  *
  * @Date 2018年10月21日 下午4:22:30
@@ -32,15 +32,24 @@ public class BlogView {
 	@Autowired
 	BlogServiceImpl blogServiceImpl;
 
+	/**
+	 * @Desc  博客内容获取，显示到web页面
+	 * @param id 博客id
+	 * @return
+	 */
 	@RequestMapping(value="/blogview")
 	public ModelAndView name(Integer id) {
 		Blog blog = blogServiceImpl.getBlog(id);
+		
+		/* 获取上一篇博客id, title */
 		Blog preBlog = blogServiceImpl.findPreBlog(id);
 		if (preBlog == null) {
 			preBlog = new Blog();
 			preBlog.setId(0);
 			preBlog.setTitle("这已经是第一篇博客了。。");
 		}
+		
+		/* 获取下一篇博客id, title */
 		Blog afterBlog = blogServiceImpl.findAfterBlog(id);
 		if (afterBlog == null) {
 			afterBlog = new Blog();
@@ -49,12 +58,14 @@ public class BlogView {
 		}
 		
 		ModelAndView modelAndView = new ModelAndView();
-		
 		modelAndView.addObject("Blog", blog);
 		modelAndView.addObject("preBlog", preBlog);
 		modelAndView.addObject("afterBlog", afterBlog);
 		modelAndView.setViewName("info");
 		
+		/* 在这里增加博客浏览量 */
+		blogServiceImpl.addBlogClickhit(id);
+			
 		return modelAndView;
 	}
 	

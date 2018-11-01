@@ -48,4 +48,7 @@ public interface BlogDao {
 	
 	/* 根据id更新blog点赞数量 */
 	public Integer updateBlogLikes(@Param("id") Integer id, @Param("value") Integer value);
+	
+	/* 根据id更新blog点击量+1 */
+	public Integer updateBlogclickHit(@Param("id") Integer id);
 }
