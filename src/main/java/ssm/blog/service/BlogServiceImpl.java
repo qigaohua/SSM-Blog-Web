@@ -100,8 +100,17 @@ public class BlogServiceImpl implements BlogService {
 	/* (non-Javadoc)
 	 * @see ssm.blog.service.BlogService#listClassifyBlogs(java.lang.Integer)
 	 */
-	public List<Blog> listClassifyBlogs(Integer blogTypeId) {
-		return blogDao.getClassifyBlogs(blogTypeId);
+	public PageCommon<Blog> listClassifyBlogs(PageCommon<Blog> pageCommon, Integer blogTypeId) {
+/*		return blogDao.getClassifyBlogs(blogTypeId);*/
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("blogTypeId", blogTypeId);
+		map.put("start", pageCommon.getStart());
+		map.put("end", pageCommon.getEnd());
+		
+		pageCommon.setResult(blogDao.getClassifyBlogsOfPage(map));
+		return pageCommon;
 	}
 
 	/* (non-Javadoc)
@@ -130,12 +139,15 @@ public class BlogServiceImpl implements BlogService {
 	}
 
 	public Integer modifyBlogLikes(Integer id, Integer value) {
-		// TODO Auto-generated method stub
 		return blogDao.updateBlogLikes(id, value);
 	}
 
 	public Integer addBlogClickhit(Integer id) {
 		return blogDao.updateBlogclickHit(id);
+	}
+
+	public Integer getClassifyBlogTotal(Integer blogTypeId) {
+		return blogDao.getClassifyBlogTotal(blogTypeId);
 	}
 
 }

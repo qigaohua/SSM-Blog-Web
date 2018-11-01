@@ -8,7 +8,7 @@
   <!--blogsbox begin-->
   <div class="blogsbox">
   
-	<c:forEach items="${classifyBlogs }" var="blog">
+	<c:forEach items="${classifyBlogPage.result }" var="blog">
     <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
       <h3 class="blogtitle"><a href="${pageContext.request.contextPath}/blogview?id=${blog.id }" target="_blank">${blog.title }</a></h3>
       <span class="blogpic">
@@ -30,9 +30,38 @@
     </c:forEach>
     
     <div class="pagelist">
-    	<a title="Total record">&nbsp;<b>45</b> </a>&nbsp;&nbsp;&nbsp;
-    		<b>1</b>&nbsp;<a href="/download/index_2.html">2</a>&nbsp;<a href="/download/index_2.html">下一页</a>&nbsp;
-    		<a href="/download/index_2.html">尾页</a>
+    	<a title="Total record">&nbsp;<b>${classifyBlogPage.total }</b> </a>&nbsp;&nbsp;&nbsp;
+    		<c:if test="${classifyBlogPage.currPage > 1 }">
+	    		<a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blogTypeId }&page=1">首页</a>
+	 			<a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blogTypeId }&page=${classifyBlogPage.currPage -1 }">上一页</a>&nbsp;
+    		</c:if>
+    		
+    		<c:if test="${classifyBlogPage.currPage > 3 }">
+		    		<a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blogTypeId }&page=${classifyBlogPage.currPage -3 }">${classifyBlogPage.currPage -3 }</a>&nbsp;
+    		</c:if>
+    		<c:if test="${classifyBlogPage.currPage > 2 }">
+		    		<a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blogTypeId }&page=${classifyBlogPage.currPage -2 }">${classifyBlogPage.currPage -2 }</a>&nbsp;
+    		</c:if>
+    		<c:if test="${classifyBlogPage.currPage > 1 }">
+		    		<a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blogTypeId }&page=${classifyBlogPage.currPage -1 }">${classifyBlogPage.currPage -1}</a>&nbsp;
+    		</c:if>
+		    		<a href="#"><b>${classifyBlogPage.currPage }</b></a>&nbsp;
+    		<c:if test="${classifyBlogPage.currPage + 1 <= classifyBlogPage.totalPage }">
+		    		<a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blogTypeId }&page=${classifyBlogPage.currPage +1 }">${classifyBlogPage.currPage + 1}</a>&nbsp;
+    		</c:if>
+<%--     		<c:if test="${pageBlog.currPage +2 } <= ${pageBlog.total }"> --%>
+    		<c:if test="${classifyBlogPage.currPage + 2 <= classifyBlogPage.totalPage }">
+		    		<a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blogTypeId }&page=${classifyBlogPage.currPage +2 }">${classifyBlogPage.currPage + 2}</a>&nbsp;
+    		</c:if>
+    		<c:if test="${classifyBlogPage.currPage + 3 <= classifyBlogPage.totalPage }">
+		    		<a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blogTypeId }&page=${classifyBlogPage.currPage +3 }">${classifyBlogPage.currPage + 3}</a>&nbsp;
+    		</c:if>
+    	
+ 
+    		<c:if test="${classifyBlogPage.currPage + 1 <= classifyBlogPage.totalPage }">
+	 			<a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blogTypeId }&page=${classifyBlogPage.currPage +1 }">下一页</a>&nbsp;
+	    		<a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blogTypeId }&page=${classifyBlogPage.totalPage }">尾页</a>
+    		</c:if>
     </div>
   </div>
   

@@ -20,8 +20,9 @@
 		</association>
 	</resultMap>
 	
+	<!-- 获取所有博客 id, title, releaseDate -->
 	<select id="getAllBlogs" resultMap="blogResultMap">
-		select id, title, releaseDate from  blog
+		select id, title, releaseDate from blog ORDER BY releaseDate DESC
 	</select>
 
 	<select id="getBlogPage" parameterType="Map" resultMap="blogResultMap">
@@ -43,17 +44,27 @@
 		select count(id) from blog
 	</select>
 	
+	<!-- 获取浏览量前五的博客 -->
 	<select id="getBlogsByClickhit" resultMap="blogResultMap">
 		select id, title, releaseDate from blog order by clickHit desc limit 5
 	</select>
 	
+	<!-- 获取点赞数量前五的博客 -->
 	<select id="getBlogsByLikes" resultMap="blogResultMap">
 		select id, title, releaseDate from blog order by likes desc limit 5
 	</select>
 	
-	<select id="getClassifyBlogs" parameterType="java.lang.Integer" resultMap="blogResultMap">
+	<!-- 根据博客类别，分页获取博客 -->
+	<select id="getClassifyBlogsOfPage" parameterType="Map" resultMap="blogResultMap">
 		select id, title, summary, releaseDate, updateDate, clickHit, likes, blogType_id 
-		from blog where blogType_id=#{blogTypeId} 
+		from blog 
+		where blogType_id=#{blogTypeId} 
+		ORDER BY releaseDate DESC limit #{start}, #{end}
+	</select>
+	
+	<!-- 获取某个类别下的博客数量总数 -->
+	<select id="getClassifyBlogTotal" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(id) from blog where blogType_id=#{blogTypeId}
 	</select>
 	
 	<!-- 根据id获取上一篇博客 -->
@@ -70,6 +81,7 @@
 		delete from blog where id=#{id}
 	</delete>
 	
+	<!-- 添加一篇博客 -->
 	<insert id="insertBlog" parameterType="Blog">
 		insert into blog (title, summary, content, releaseDate, updateDate, keyWord, clickHit, likes, blogType_id)
 				values (#{title}, #{summary}, #{content}, now(), now(), #{keyWord}, 0, 0, #{blogType.id})
@@ -79,6 +91,7 @@
 		</selectKey>
 	</insert>
 	
+	<!-- 更新博客内容 -->
 	<update id="updateBlog" parameterType="Blog">
 		update blog set title=#{title}, summary=#{summary}, content=#{content}, updateDate=now(), 
 						keyWord=#{keyWord}, blogType_id=#{blogType.id} where id=#{id}

@@ -114,7 +114,7 @@
     		<c:if test="${pageBlog.currPage > 1 }">
 		    		<a href="${pageContext.request.contextPath}/pageBlog?page=${pageBlog.currPage -1 }">${pageBlog.currPage -1}</a>&nbsp;
     		</c:if>
-		    		<a href=""><b>${pageBlog.currPage }</b></a>&nbsp;
+		    		<a href="#"><b>${pageBlog.currPage }</b></a>&nbsp;
     		<c:if test="${pageBlog.currPage + 1 <= pageBlog.totalPage }">
 		    		<a href="${pageContext.request.contextPath}/pageBlog?page=${pageBlog.currPage +1 }">${pageBlog.currPage + 1}</a>&nbsp;
     		</c:if>

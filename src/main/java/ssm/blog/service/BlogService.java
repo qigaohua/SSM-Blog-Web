@@ -26,7 +26,11 @@ public interface BlogService {
 	public Integer modifyBlog(Blog blog);
 	
 
-	public List<Blog> listClassifyBlogs(Integer blogTypeId);
+	/* 按页获取某个分类的博客 */
+	public PageCommon<Blog> listClassifyBlogs(PageCommon<Blog> pageCommon, Integer blogTypeId);
+	/* 获取某个分类的博客数量 */
+	public Integer getClassifyBlogTotal(Integer blogTypeId);
+	
 	public List<Blog> listBlogOfClickhit();
 	public List<Blog> listBlogOfLikes();
 	

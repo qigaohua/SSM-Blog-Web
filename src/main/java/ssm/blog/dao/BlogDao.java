@@ -26,15 +26,19 @@ public interface BlogDao {
 	public List<Blog> getAllBlogs();
 	
 /*	public List<Blog> getBlogPage(@Param("start") Integer start, @Param("end") Integer end);*/
+	/* 分页获取博客 */
 	public List<Blog> getBlogPage(Map<String, Object> map);
+	/* 获取博客数量总数 */
 	public Long getBlogTotal();
 	public Integer delBlogById(@Param("id") Integer id);
 	public Integer insertBlog(Blog blog);
 	public Blog getBlogById(Integer id);
 	public Integer updateBlog(Blog blog);
 	
-	/* 获取某一分类的所有博客 */
-	public List<Blog> getClassifyBlogs(Integer blogTypeId);
+	/* 获取某一分类的所有博客, 按页获取 */
+	public List<Blog> getClassifyBlogsOfPage(Map<String, Object> map);
+	/* 获取某一分类的所有博客数量 */
+	public Integer getClassifyBlogTotal(Integer blogTypeId);
 	
 	/* 根据点击量获取博客  */
 	public List<Blog> getBlogsByClickhit();

@@ -26,7 +26,7 @@ import ssm.blog.service.BlogServiceImpl;
 import ssm.blog.service.BlogTypeServiceImpl;
 
 /**
- * @Desc   //TODO 添加描述 
+ * @Desc   博客首页显示内容相关功能类 
  * @Author 齐高华
  *
  * @Date 2018年10月21日 下午2:05:35
@@ -107,17 +107,32 @@ public class BlogHomePageController {
 	}
 	
 	@RequestMapping(value="/listClassifyBlog")
-	public ModelAndView listClassify(@RequestParam(value="id") Integer blogTypeId) {
-		ModelAndView modelAndView = new ModelAndView();
+	public ModelAndView listClassify(@RequestParam(value="page", defaultValue="1") String page,
+									 @RequestParam(value="id") Integer blogTypeId) {
 		
-		List<Blog> classifyBlogs = blogServiceImpl.listClassifyBlogs(blogTypeId);
-		modelAndView.addObject("classifyBlogs", classifyBlogs);
+		ModelAndView modelAndView = new ModelAndView();
+		PageCommon<Blog> pageCommon = new PageCommon<Blog>(Integer.parseInt(page), 5);
+		
+		/* 按页获取博客信息 */
+		pageCommon = blogServiceImpl.listClassifyBlogs(pageCommon, blogTypeId);
+		/* 获取某个类别博客总数 */
+		pageCommon.setTotal((long)blogServiceImpl.getClassifyBlogTotal(blogTypeId));
+		/* 得到总的页数，方便web页面分页  */
+		Integer total = (int) ((pageCommon.getTotal() + pageCommon.getPageSize() - 1) / pageCommon.getPageSize());
+		pageCommon.setTotalPage(total);
+		
+		modelAndView.addObject("classifyBlogPage", pageCommon);
+		modelAndView.addObject("blogTypeId", blogTypeId);
+
 		modelAndView.setViewName("classifyBlogs");
 		
 		return modelAndView;
 	}
 	
-	
+	/**
+	 * @Desc  页面时间轴功能，获取所有博客，按时间倒叙显示
+	 * @return
+	 */
 	@RequestMapping(value="time")
 	public ModelAndView timeBlogs() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -134,12 +149,20 @@ public class BlogHomePageController {
 	}
 	
 	
+	/**
+	 * @Desc  页面关于我功能， 显示个人信息
+	 * @return
+	 */
 	@RequestMapping(value="about")
 	public String aboutMe() {
 		return "about";
 	}
 	
 	
+	/**
+	 * @Desc 页面留言功能 TODO
+	 * @return
+	 */
 	@RequestMapping(value="/leaveWord")
 	public String leaveWordForMe() {
 		return "leaveWord";
