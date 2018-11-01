@@ -1,5 +1,7 @@
 package ssm.blog.service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.apache.shiro.authc.AuthenticationException;
@@ -92,13 +94,10 @@ public class BlogRealm extends AuthorizingRealm {
 		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 		
 		String username = token.getUsername();
-		
-		System.out.println("doGetAuthenticationInfo: " + username);
-		
+				
 		if (!StringUtils.isEmpty(username)) {
 			User user = userService.fineUserByUserName(username);
 			if (user != null) {
-				/*System.out.println(user.getUsername() + " " + user.getPassword());*/
 				return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), getName());
 			}
 		}
@@ -106,4 +105,36 @@ public class BlogRealm extends AuthorizingRealm {
 		return null;
 	}
 
+	public String MD5Password(String password, String salt) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("md5");
+			byte[] bytes = md.digest((password + salt).getBytes());
+			
+			/**
+			 *    可行方案2
+			String md5Str = new BigInteger(1, bytes).toString(16);
+			for (int i = 0; i < 32 - md5Str.length(); i ++)
+				md5Str = "0" + md5Str;
+			return md5Str;
+			*/
+			
+			return toHex(bytes);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public String toHex(byte[] bytes) {
+		final char[] HEX_DIGITS = "0123456789abcdef".toCharArray();
+		
+		StringBuilder string = new StringBuilder(bytes.length * 2);
+		for (int i = 0; i < bytes.length; i++) {
+			string.append(HEX_DIGITS[(bytes[i] >> 4) & 0x0f]);
+			string.append(HEX_DIGITS[bytes[i] & 0x0f]);
+		}
+		
+		return string.toString();
+	}
 }

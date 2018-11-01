@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </ul>
       </li>
  -->      
- 		<li><a href="">学无止境</a>
+ 	  <li><a href="">学无止境</a>
         <ul class="sub-nav">
           <li><a href="list.html">编程语言</a></li>
           <li><a href="list.html">操作系统</a></li>
@@ -76,7 +76,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </form>
       </div>
       <!--search end--> 
+
+      <li style="position: relative; float: right;"><a href="${pageContext.request.contextPath}/toLogin">登录 | 注册</a> </li>
+
+	  
     </nav>
+    
   </div>
   <!--menu end--> 
   <!--mnav begin-->

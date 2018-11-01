@@ -13,7 +13,16 @@ public class UserServiceImpl implements IUserService {
 	private IUserDao userDao;
 	
 	public User fineUserByUserName(String username) {
-		return  userDao.getUserData(username);
+		return  userDao.getUserByUsername(username);
+	}
+
+
+	public User fineUserByEmail(String email) {
+		return userDao.getUserByEmail(email);
+	}
+	
+	public Integer addUser(User user) {
+		return userDao.insertUser(user);
 	}
 
 }

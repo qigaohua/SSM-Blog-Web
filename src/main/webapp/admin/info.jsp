@@ -63,8 +63,11 @@
           <li class="like">${Blog.likes }</li>
         </ul>
       </div>
-      <div class="tags"><a href="/" target="_blank">个人博客</a> &nbsp; <a href="/" target="_blank">小世界</a></div>
-      		${Blog.content }
+      <div class="tags">
+      	<a href="/" target="_blank">个人博客</a> &nbsp; 
+      	<a href="/" target="_blank">小世界</a>
+      </div>
+      <div class="news_con">${Blog.content }</div>
     </div>
     <div class="share">
       <p class="diggit"><a id="dianzan" href="JavaScript:addDianzan(${Blog.id });"> 很赞哦  </a>(<b id="diggnum">${Blog.likes }</b>)</p>
@@ -80,20 +83,20 @@
           <div class="pay_item checked" data-id="alipay"> <span class="radiobox"></span> <span class="pay_logo"><img src="/blog/static/blogPages/images/alipay.jpg" alt="支付宝"></span> </div>
           <div class="pay_item" data-id="weipay"> <span class="radiobox"></span> <span class="pay_logo"><img src="/blog/static/blogPages/images/wechat.jpg" alt="微信"></span> </div>
         </div>
-        <script type="text/javascript">
-    $(function(){
-    	$(".pay_item").click(function(){
-    		$(this).addClass('checked').siblings('.pay_item').removeClass('checked');
-    		var dataid=$(this).attr('data-id');
-    		$(".shang_payimg img").attr("src","/blog/static/blogPages/images/"+dataid+"img.jpg");
-    		$("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
-    	});
-    });
-    function dashangToggle(){
-    	$(".hide_box").fadeToggle();
-    	$(".shang_box").fadeToggle();
-    }
-    </script> 
+       	 <script type="text/javascript">
+		    $(function(){
+		    	$(".pay_item").click(function(){
+		    		$(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+		    		var dataid=$(this).attr('data-id');
+		    		$(".shang_payimg img").attr("src","/blog/static/blogPages/images/"+dataid+"img.jpg");
+		    		$("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+		    	});
+		    });
+		    function dashangToggle(){
+		    	$(".hide_box").fadeToggle();
+		    	$(".shang_box").fadeToggle();
+		    }
+   		 </script> 
       </div>
     </div>
     <div class="nextinfo">

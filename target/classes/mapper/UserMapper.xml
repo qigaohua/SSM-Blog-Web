@@ -7,16 +7,29 @@
 
 	
 	<sql id="UserColumns">
-		id, username, password, profile, nickname, sign, imagename
+		id, username, password, email, salt, profile, nickname, sign, imagename
 	</sql>
 	
-	<select id="getUserDataById" parameterType="int" resultType="ssm.blog.entity.User">
+	<select id="getUserById" parameterType="int" resultType="ssm.blog.entity.User">
 		select <include refid="UserColumns" /> from user where id=#{id}
 	</select>
 	
-	<select id="getUserData" parameterType="String" resultType="ssm.blog.entity.User">
+	<select id="getUserByUsername" parameterType="String" resultType="ssm.blog.entity.User">
 		select <include refid="UserColumns" /> from user where username=#{username}
 	</select>
+	
+	<select id="getUserByEmail" parameterType="String" resultType="ssm.blog.entity.User">
+		select <include refid="UserColumns" /> from user where email=#{email}
+	</select>
+	
+	
+	<insert id="insertUser" parameterType="User">
+		insert into user (username, password, email, salt) values (#{username}, #{password}, #{email}, #{salt})
+		
+		<selectKey resultType="java.lang.Integer" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+	</insert>
 
 </mapper>
 

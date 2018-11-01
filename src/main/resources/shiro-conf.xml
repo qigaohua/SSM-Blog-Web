@@ -71,7 +71,7 @@
                <!-- /userList=authc,perms[/userList] -->
                
                	/menu=roles[Boss]
-                /** = authc
+                <!-- /** = authc -->
              </value>  
         </property>  
     </bean>  

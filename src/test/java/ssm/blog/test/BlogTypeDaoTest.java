@@ -81,7 +81,7 @@ public class BlogTypeDaoTest {
 	
 	@Test
 	public void testGetUserByData() {
-		User user = userDao.getUserData("FlyQi");
+		User user = userDao.getUserByUsername("FlyQi");
 		System.out.println(user.toString());
 	}
 }

@@ -16,8 +16,9 @@ import ssm.blog.entity.User;
 
 @Component
 public interface IUserDao {
-	public Integer saveUser(User user);
+	public Integer insertUser(User user);
 	public Integer deleteUser(Integer id);
-	public User getUserDataById(int id);
-	public User getUserData(String username);
+	public User getUserById(int id);
+	public User getUserByUsername(String username);
+	public User getUserByEmail(String email);
 }
