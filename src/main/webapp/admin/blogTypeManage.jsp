@@ -12,7 +12,7 @@
         //datagrid初始化
         $('#dg').datagrid({
             //请求数据的url
-            url: '/blog/listPage',
+            url: '${pageContext.request.contextPath}/listPage',
             //载入提示信息
             loadMsg: 'loading...',
             //水平自动展开，如果设置此属性，则不会有水平滚动条，演示冻结列时，该参数不要设置
@@ -33,7 +33,7 @@
                 text: '添加',            //名称
                 handler: function () {  //回调函数
                 	$("#dlg").dialog("open").dialog("setTitle", "添加博客类型");
-                	url = "/blog/saveBlogType";
+                	url = "${pageContext.request.contextPath}/saveBlogType";
                 }
             },'-',{
                 iconCls: 'icon-edit',
@@ -49,7 +49,7 @@
                 	var row = selectRows[0];
                 	$("#dlg").dialog("open").dialog("setTitle", "修改博客类型");
                 	$("#fm").form("load", row);
-                	url = "/blog/saveBlogType?id=" + row.id;
+                	url = "${pageContext.request.contextPath}/saveBlogType?id=" + row.id;
                 }
             },'-',{
                 iconCls: 'icon-edit',
@@ -70,7 +70,7 @@
                 	$.messager.confirm("系统提示", "<font color=red>你确定要删除选中的"+selectRows.length+"条数据吗？</font>",
                 			function(r) {
 								if (r) {
-									$.post("/blog/deleteBlogType",
+									$.post("${pageContext.request.contextPath}/deleteBlogType",
 											{idsStr: idsStr}, function(result) {
 												if (result.exist) {
 													$.messager.alert("系统提示", "删除失败，该博客类别下有博客");

@@ -44,7 +44,7 @@
 	                    height: "auto" ,
 	                    closable:true,      //是否允许选项卡摺叠。
 	/*                     iconCls:icon,    //显示图标 */
-	                    content:"<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src='/blog/"+url+"'></iframe>"
+	                    content:"<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src='${pageContext.request.contextPath}/"+url+"'></iframe>"
 	                    //url 远程加载所打开的url
 	                })
                 }

@@ -42,6 +42,12 @@ public class BlogHomePageController {
 	@Autowired
 	private BlogTypeServiceImpl blogTypeServiceImpl;
 	
+	
+	@RequestMapping(value="/")
+	public String index() {
+		return "redirect:index";
+	}
+		
 	@RequestMapping(value="/index")
 	public String homePage(@RequestParam(value="page", defaultValue="1") String page, HttpServletRequest request) {
 		

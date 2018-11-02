@@ -40,9 +40,9 @@
  <div class="picsbox"> 
   <div class="banner">
     <div id="banner" class="fader">
-      <li class="slide" ><a href="#" target="_blank"><img src="/blog/static/blogPages/images/banner01.jpg"><span class="imginfo">风起于青萍之末，浪成于微澜之间 !</span></a></li>
-      <li class="slide" ><a href="#" target="_blank"><img src="/blog/static/blogPages/images/blog6.jpg"><span class="imginfo">三分天赋可入津， 七分勤奋入桃园 。</span></a></li>
-      <li class="slide" ><a href="#" target="_blank"><img src="/blog/static/blogPages/images/banner03.jpg"><span class="imginfo">个人博客，属于我的小世界！</span></a></li>
+      <li class="slide" ><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/static/blogPages/images/banner01.jpg"><span class="imginfo">风起于青萍之末，浪成于微澜之间 !</span></a></li>
+      <li class="slide" ><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/static/blogPages/images/blog6.jpg"><span class="imginfo">三分天赋可入津， 七分勤奋入桃园 。</span></a></li>
+      <li class="slide" ><a href="#" target="_blank"><img src="${pageContext.request.contextPath}/static/blogPages/images/banner03.jpg"><span class="imginfo">个人博客，属于我的小世界！</span></a></li>
       <div class="fader_controls">
         <div class="page prev" data-target="prev">&lsaquo;</div>
         <div class="page next" data-target="next">&rsaquo;</div>
@@ -53,10 +53,10 @@
   </div>
   <!--banner end-->
   <div class="toppic">
-    <li> <a href="#" target="_blank"> <i><img src="/blog/static/blogPages/images/blog4.jpg"></i>
+    <li> <a href="#" target="_blank"> <i><img src="${pageContext.request.contextPath}/static/blogPages/images/blog4.jpg"></i>
       <h2>别让这些闹心的套路，毁了你的网页设计!</h2>
       <span>学无止境</span> </a> </li>
-    <li> <a href="#" target="_blank"> <i><img src="/blog/static/blogPages/images/blog2.jpg"></i>
+    <li> <a href="#" target="_blank"> <i><img src="${pageContext.request.contextPath}/static/blogPages/images/blog2.jpg"></i>
       <h2>个人博客，属于我的小世界！</h2>
       <span>学无止境</span> </a> </li>
   </div>

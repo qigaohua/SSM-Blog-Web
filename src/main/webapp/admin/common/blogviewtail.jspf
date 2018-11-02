@@ -32,42 +32,42 @@
     <div class="tuijian">
       <h2 class="hometitle">博客推荐</h2>
       <ul class="tjpic">
-        <i><img src="/blog/static/blogPages/images/blog2.jpg"></i>
-        <p><a href="/blog/blogview?id=${blogLikesList[0].id }">${blogLikesList[0].title }</a></p>
+        <i><img src="${pageContext.request.contextPath}/static/blogPages/images/blog2.jpg"></i>
+        <p><a href="${pageContext.request.contextPath}/blogview?id=${blogLikesList[0].id }">${blogLikesList[0].title }</a></p>
       </ul>
       <ul class="sidenews">
-        <li> <i><img src="/blog/static/blogPages/images/blog3.jpg"></i>
-          <p><a href="/blog/blogview?id=${blogLikesList[1].id }">${blogLikesList[1].title }</a></p>
+        <li> <i><img src="${pageContext.request.contextPath}/static/blogPages/images/blog3.jpg"></i>
+          <p><a href="${pageContext.request.contextPath}/blogview?id=${blogLikesList[1].id }">${blogLikesList[1].title }</a></p>
           <span><fmt:formatDate value="${blogLikesList[1].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
-        <li> <i><img src="/blog/static/blogPages/images/blog4.jpg"></i>
-          <p><a href="/blog/blogview?id=${blogLikesList[2].id }">${blogLikesList[2].title }</a></p>
+        <li> <i><img src="${pageContext.request.contextPath}/static/blogPages/images/blog4.jpg"></i>
+          <p><a href="${pageContext.request.contextPath}/blogview?id=${blogLikesList[2].id }">${blogLikesList[2].title }</a></p>
           <span><fmt:formatDate value="${blogLikesList[2].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
-        <li> <i><img src="/blog/static/blogPages/images/v1.jpg"></i>
-          <p><a href="/blog/blogview?id=${blogLikesList[3].id }">${blogLikesList[3].title }</a></p>
+        <li> <i><img src="${pageContext.request.contextPath}/static/blogPages/images/v1.jpg"></i>
+          <p><a href="${pageContext.request.contextPath}/blogview?id=${blogLikesList[3].id }">${blogLikesList[3].title }</a></p>
           <span><fmt:formatDate value="${blogLikesList[3].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
-        <li> <i><img src="/blog/static/blogPages/images/v2.jpg"></i>
-          <p><a href="/blog/blogview?id=${blogLikesList[4].id }">${blogLikesList[4].title }</a></p>
+        <li> <i><img src="${pageContext.request.contextPath}/static/blogPages/images/v2.jpg"></i>
+          <p><a href="${pageContext.request.contextPath}/blogview?id=${blogLikesList[4].id }">${blogLikesList[4].title }</a></p>
           <span><fmt:formatDate value="${blogLikesList[4].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
  	  </ul>
     </div>
     <div class="tuijian">
       <h2 class="hometitle">点击排行</h2>
       <ul class="tjpic">
-        <i><img src="/blog/static/blogPages/images/blog4.jpg"></i>
-        <p><a href="/blog/blogview?id=${blogClickhitList[0].id }">${blogClickhitList[0].title }</a></p>
+        <i><img src="${pageContext.request.contextPath}/static/blogPages/images/blog4.jpg"></i>
+        <p><a href="${pageContext.request.contextPath}/blogview?id=${blogClickhitList[0].id }">${blogClickhitList[0].title }</a></p>
       </ul>
       <ul class="sidenews">
-        <li> <i><img src="/blog/static/blogPages/images/blog3.jpg"></i>
-          <p><a href="/blog/blogview?id=${blogClickhitList[1].id }">${blogClickhitList[1].title }</a></p>
+        <li> <i><img src="${pageContext.request.contextPath}/static/blogPages/images/blog3.jpg"></i>
+          <p><a href="${pageContext.request.contextPath}/blogview?id=${blogClickhitList[1].id }">${blogClickhitList[1].title }</a></p>
           <span><fmt:formatDate value="${blogClickhitList[1].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
-        <li> <i><img src="/blog/static/blogPages/images/blog2.jpg"></i>
-          <p><a href="/blog/blogview?id=${blogClickhitList[2].id }">${blogClickhitList[2].title }</a></p>
+        <li> <i><img src="${pageContext.request.contextPath}/static/blogPages/images/blog2.jpg"></i>
+          <p><a href="${pageContext.request.contextPath}/blogview?id=${blogClickhitList[2].id }">${blogClickhitList[2].title }</a></p>
           <span><fmt:formatDate value="${blogClickhitList[2].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
-        <li> <i><img src="/blog/static/blogPages/images/v1.jpg"></i>
-          <p><a href="/blog/blogview?id=${blogClickhitList[3].id }">${blogClickhitList[3].title }</a></p>
+        <li> <i><img src="${pageContext.request.contextPath}/static/blogPages/images/v1.jpg"></i>
+          <p><a href="${pageContext.request.contextPath}/blogview?id=${blogClickhitList[3].id }">${blogClickhitList[3].title }</a></p>
           <span><fmt:formatDate value="${blogClickhitList[3].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
-        <li> <i><img src="/blog/static/blogPages/images/v2.jpg"></i>
-          <p><a href="/blog/blogview?id=${blogClickhitList[4].id }">${blogClickhitList[4].title }</a></p>
+        <li> <i><img src="${pageContext.request.contextPath}/static/blogPages/images/v2.jpg"></i>
+          <p><a href="${pageContext.request.contextPath}/blogview?id=${blogClickhitList[4].id }">${blogClickhitList[4].title }</a></p>
           <span><fmt:formatDate value="${blogClickhitList[4].releaseDate }" pattern="yyyy-MM-dd" /></span> </li>
  	  </ul>
     </div>
@@ -104,7 +104,7 @@
         <li class="qq"><a href="#" target="_blank"><span>QQ号</span>1969555431</a></li>
         <li class="email"><a href="#" target="_blank"><span>邮箱帐号</span>qigaohua168@163.com</a></li>
         <li class="wxgzh"><a href="#" target="_blank"><span>微信号</span>qgh_1959555431</a></li>
-        <li class="wx"><img src="/blog/static/blogPages/images/wx.jpg"></li>
+        <li class="wx"><img src="${pageContext.request.contextPath}/static/blogPages/images/wx.jpg"></li>
       </ul>
     </div>
   </div>

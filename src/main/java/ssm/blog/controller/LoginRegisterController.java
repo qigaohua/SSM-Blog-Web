@@ -62,7 +62,12 @@ public class LoginRegisterController {
 		return "toLogin";
 	}
 	
-	
+	/**
+	 * @Desc  用户注册功能
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String register(HttpServletRequest request, HttpServletResponse response) {
 		String username = request.getParameter("username");
@@ -70,7 +75,7 @@ public class LoginRegisterController {
 		String repassword = request.getParameter("repassword");
 		String email = request.getParameter("email");
 		
-		System.out.println(username+" "+password+" "+repassword+" "+email);
+		/*System.out.println(username+" "+password+" "+repassword+" "+email);*/
 		
 		JSONObject result = new JSONObject();
 		if (username != null && password != null && repassword != null && email != null) {
@@ -85,10 +90,10 @@ public class LoginRegisterController {
 			}
 			else {
 				String salt = produceSalt(32);
-				System.out.println(">>>>>>salt: " + salt);
+				/*System.out.println(">>>>>>salt: " + salt);*/
 				
 				String md5Password = MD5Password(password, salt);	
-				System.out.println(">>>>>>md5Password: " + md5Password);
+				/*System.out.println(">>>>>>md5Password: " + md5Password);*/
 				
 				User user = new User();
 				user.setUsername(username);
@@ -139,8 +144,7 @@ public class LoginRegisterController {
 		for (int i = 0; i < length; i ++) {
 			x = random.nextInt(10000) % 3;
 			switch (x) {
-			case 0:
-				
+			case 0:			
 				string.append((char)('A' + random.nextInt(10000) % 26));	
 				break;
 			case 1:

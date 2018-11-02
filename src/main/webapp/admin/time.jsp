@@ -17,7 +17,7 @@
   </ul>
   <ul id="list2">
   </ul>
-  <script src="/blog/static/blogPages/js/page2.js"></script> 
+  <script src="${pageContext.request.contextPath}/static/blogPages/js/page2.js"></script> 
   </div>
 </div>
 <footer>

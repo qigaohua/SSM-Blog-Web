@@ -159,7 +159,7 @@
 			$.post(url,params)
 			alert('登录成功'); */
 			
-			var url="/blog/login?username="+username+"&password="+password;
+			var url="${pageContext.request.contextPath}/login?username="+username+"&password="+password;
 			window.location.replace(url); 
 /* 			window.location.href = "/blog/login?username="+username+"&password="+password" */
 		}
@@ -255,7 +255,7 @@
 		if(flag){
 			return false;
 		}else{//注册
-			$.post("/blog/register", {username: username, password: password, repassword: repassword, email: code}, 
+			$.post("${pageContext.request.contextPath}/register", {username: username, password: password, repassword: repassword, email: code}, 
 					function(result) {
 						if (result.success) {
 				 			spop({			
@@ -420,6 +420,7 @@ body{
 .snow-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100001; }
 
 </style>
+	<input id="PageContext" type="hidden" value="${pageContext.request.contextPath}" /> <!-- 为snow.js获取项目绝对路径 -->
 </head>
 <body>
 	<!-- 雪花背景 -->

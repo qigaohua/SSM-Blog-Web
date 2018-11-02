@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			$.messager.confirm("Confirm", "<font color=red>你确定删除这"+selectRows.length+"行数据吗 ？</font>", function(r) {
 				if (r) {
-					$.post("/blog/delBlog", {idsStr: idsStr}, function(result) {
+					$.post("${pageContext.request.contextPath}/delBlog", {idsStr: idsStr}, function(result) {
 						if (result.success) {
 							$.messager.alert("系统提示", "数据删除成功 ！");
 							$("#tt").datagrid("reload");
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 			
   			var text="修改博客";
-		    var url="/blog/updateBlog?id="+selectRows[0].id;
+		    var url="${pageContext.request.contextPath}/updateBlog?id="+selectRows[0].id;
             //判断当前选项卡是否存在
             var parent$ = self.parent.$;
             if(parent$('#tabs').tabs('exists',text)){
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	
   
   	<table id="tt" class="easyui-datagrid" fitColumns="true" pagination="true"
-            url="/blog/listBlogPage" title="博客管理" toolbar="#tb">
+            url="${pageContext.request.contextPath}/listBlogPage" title="博客管理" toolbar="#tb">
         <thead>
             <tr>
                 <th field="cb" checkbox="true" align="center"></th>
