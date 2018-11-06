@@ -20,9 +20,11 @@ import com.alibaba.druid.stat.TableStat.Mode;
 import com.mysql.cj.Session;
 
 import ssm.blog.entity.Blog;
+import ssm.blog.entity.BlogTags;
 import ssm.blog.entity.BlogType;
 import ssm.blog.entity.PageCommon;
 import ssm.blog.service.BlogServiceImpl;
+import ssm.blog.service.BlogTagsServiceImpl;
 import ssm.blog.service.BlogTypeServiceImpl;
 
 /**
@@ -41,6 +43,9 @@ public class BlogHomePageController {
 	
 	@Autowired
 	private BlogTypeServiceImpl blogTypeServiceImpl;
+	
+	@Autowired
+	private BlogTagsServiceImpl blogTagsServiceImpl;
 	
 	
 	@RequestMapping(value="/")
@@ -61,6 +66,7 @@ public class BlogHomePageController {
 		List<BlogType> blogTypeList = blogTypeServiceImpl.getBlogTypes();
 		List<Blog> clickhitBlogList = blogServiceImpl.listBlogOfClickhit();
 		List<Blog> likesBlogList = blogServiceImpl.listBlogOfLikes();
+		List<BlogTags> blogTagsList = blogTagsServiceImpl.getBlogAllTags();
 		
 		HttpSession session = request.getSession();
 //		session.setAttribute("BlogList", pageCommon.getResult());
@@ -68,6 +74,7 @@ public class BlogHomePageController {
 		session.setAttribute("blogTypeList", blogTypeList);
 		session.setAttribute("blogClickhitList", clickhitBlogList);
 		session.setAttribute("blogLikesList", likesBlogList);
+		session.setAttribute("blogTagsList", blogTagsList);
 		
 /*		ModelAndView modelAndView = new ModelAndView();
 		

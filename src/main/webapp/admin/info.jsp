@@ -64,8 +64,11 @@
         </ul>
       </div>
       <div class="tags">
-      	<a href="/" target="_blank">个人博客</a> &nbsp; 
-      	<a href="/" target="_blank">小世界</a>
+        <c:forEach items="${blogTagsList }" var="blogTags">
+        	<a href="#" target="_blank">${blogTags.name }</a> &nbsp;
+      	</c:forEach>
+<!--       	<a href="/" target="_blank">个人博客</a> &nbsp; 
+      	<a href="/" target="_blank">小世界</a> -->
       </div>
       <div class="news_con">${Blog.content }</div>
     </div>

@@ -146,26 +146,26 @@ public class BlogTypeController {
 	}
 
 	
-	@RequestMapping(value="/writeBlogOfGetAllBlogType")
+/*	@RequestMapping(value="/writeBlogOfGetAllBlogType")
 	public ModelAndView writeBlog(Model model, HttpServletRequest request) {
 		List<BlogType> blogTypeList = blogTypeServiceImpl.getBlogTypes();
 	
 		
-/*		ServletContext servletContext = request.getSession().getServletContext();
+		ServletContext servletContext = request.getSession().getServletContext();
 		servletContext.setAttribute("blogTypeList", blogTypeList);
 //		model.addAttribute("blogTypeList", list);
 		for (BlogType bt: blogTypeList)
 			System.out.println(bt.toString());
-*/			
+			
 		
-/*		for (BlogType bt: blogTypeList)
+		for (BlogType bt: blogTypeList)
 			System.out.println(bt.toString());
-*/		
+		
 		ModelAndView modelAndView = new ModelAndView();
 		
 		modelAndView.addObject("blogTypeList", blogTypeList);
 		modelAndView.setViewName("writeBlog");
 		
 		return modelAndView;
-	}
+	}*/
 }

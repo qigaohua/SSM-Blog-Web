@@ -26,6 +26,9 @@ public class Blog {
 	// 更新日期
 	private Date updateDate;
 	
+	// 博客标签
+	private String tags;
+	
 	// 博客关键字
 	private String keyWord;
 	// 评论数
@@ -196,16 +199,22 @@ public class Blog {
 		this.likes = likes;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+
+	public String getTags() {
+		return tags;
+	}
+
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Blog [id=" + id + ", title=" + title + ", summary=" + summary + ", content=" + content
-				+ ", releaseDate=" + releaseDate + ", updateDate=" + updateDate + ", keyWord=" + keyWord + ", clickHit="
-				+ clickHit + ", blogType=" + blogType + ", author=" + author + "]";
+				+ ", releaseDate=" + releaseDate + ", updateDate=" + updateDate + ", tags=" + tags + ", keyWord="
+				+ keyWord + ", clickHit=" + clickHit + ", likes=" + likes + ", blogType=" + blogType + ", author="
+				+ author + "]";
 	}
-	
-	
-
+		
 }

@@ -74,7 +74,10 @@
     <div class="cloud">
       <h2 class="hometitle">标签云</h2>
       <ul>
-        <a href="#">陌上花开</a> 
+      	<c:forEach items="${blogTagsList }" var="blogTags">
+      		<a href="#">${blogTags.name }(${blogTags.number })</a> 
+      	</c:forEach>
+<!--         <a href="#">陌上花开</a> 
         <a href="#">校园生活</a> 
         <a href="#">html5</a> 
         <a href="#">SumSung</a> 
@@ -85,7 +88,7 @@
         <a href="#">索尼</a> 
         <a href="#">华维荣耀</a> 
         <a href="#">三星</a> 
-        <a href="#">索尼</a>
+        <a href="#">索尼</a> -->
       </ul>
     </div>
     <div class="links">

@@ -5,6 +5,7 @@ package ssm.blog.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONObject;
 
 import ssm.blog.entity.Blog;
+import ssm.blog.entity.BlogTags;
 import ssm.blog.service.BlogServiceImpl;
+import ssm.blog.service.BlogTagsServiceImpl;
 
 /**
  * @Desc   博客内容web显示相关功能类
@@ -31,6 +34,9 @@ public class BlogView {
 	
 	@Autowired
 	BlogServiceImpl blogServiceImpl;
+	
+	@Autowired
+	BlogTagsServiceImpl blogTagsServiceImpl;
 
 	/**
 	 * @Desc  博客内容获取，显示到web页面
@@ -40,6 +46,7 @@ public class BlogView {
 	@RequestMapping(value="/blogview")
 	public ModelAndView name(Integer id) {
 		Blog blog = blogServiceImpl.getBlog(id);
+		List<BlogTags> blogTagsList = blogTagsServiceImpl.findBlogTagsMapping(id); 
 		
 		/* 获取上一篇博客id, title */
 		Blog preBlog = blogServiceImpl.findPreBlog(id);
@@ -59,6 +66,8 @@ public class BlogView {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("Blog", blog);
+		modelAndView.addObject("blogTagsList", blogTagsList);
+		
 		modelAndView.addObject("preBlog", preBlog);
 		modelAndView.addObject("afterBlog", afterBlog);
 		modelAndView.setViewName("info");

@@ -52,7 +52,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //截取博客前155字符 作为博客简介
             var summary = UE.getEditor('editor').getContentTxt().substr(0, 155);
             //博客关键词
-            var keyWord = $("#keyWord").val();
+           /* var keyWord = $("#keyWord").val();  */
+            /* var checkedNum = $("input[name='tags']:checked").length; */
+           	var tags = $.makeArray($("input[name='tags']:checked"));
+           	var tagsArray = []
+           	for (var i in tags)
+           		tagsArray.push(tags[i].value);
+           	var tagsStr = tagsArray.join(",");
+           	alert(tagsStr);
             //获取博客内容  不带标签 纯文本
             var contentNoTag = UE.getEditor('editor').getContentTxt();
             //校验
@@ -60,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 $.messager.alert("系统提示", "请输入标题！");
             } else if (blogTypeId == null || blogTypeId == '') {
                 $.messager.alert("系统提示", "请选择博客类型！");
-            } else if (content == null || content == '') {
+            } else if (content == null || content == '') { 
                 $.messager.alert("系统提示", "请编辑博客内容！");
             } else {
                //ajax请求 请求后台写博客接口
@@ -71,7 +78,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             'blogType.id' : blogTypeId,
                             'content' : content,
                             'summary' : summary,
-                            'keyWord' : keyWord,
+                            /*'keyWord' : keyWord,*/
+                            'tags'    : tagsStr,
                             'contentNoTag' : contentNoTag
                         }, function(result) {
                             if (result.success) {
@@ -88,7 +96,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#title").val("");
             $("#blogTypeId").combobox("setValue", "");
             UE.getEditor("editor").setContent("");
-            $("#keyWord").val("");
+           /*  $("#keyWord").val(""); */
+            $("[name='tags']").removeAttr("checked");
         }
     </script>
   
@@ -120,9 +129,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         style="width:95%; height:200px;">${Blog.content }</script></td>
             </tr>
             <tr>
-                <td>关键字：</td>
+<%--                 <td>关键字：</td>
             <td><input type="text" id="keyWord" name="keyWord" value="${Blog.keyWord }"
-                    style="width:400px" />&nbsp;&nbsp;&nbsp;多个关键字的话请用空格隔开</td>
+                    style="width:400px" />&nbsp;&nbsp;&nbsp;多个关键字的话请用空格隔开</td> --%>
+                    <td>标签：</td>
+            <td>
+            	<c:forEach items="${blogTagsList }" var="blogTags">
+					<c:choose>
+						<c:when test="${blogTags.isChecked == true }">
+							<input type="checkbox" id="tags" name="tags" value="${blogTags.id }" checked="checked" />${blogTags.name }
+						</c:when>
+						<c:otherwise>
+							<input type="checkbox" id="tags" name="tags" value="${blogTags.id }" />${blogTags.name }
+						</c:otherwise>
+					</c:choose>
+            		<%-- <input type="checkbox" id="tags" name="tags" value="${blogTags.id }" />${blogTags.name } --%>
+            	</c:forEach>
+            </td>
             </tr>
             <tr>
                 <td></td>
