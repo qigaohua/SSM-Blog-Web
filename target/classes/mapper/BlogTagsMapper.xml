@@ -21,7 +21,7 @@
 	</delete>
 	
 	<select id="selectBlogTagsMapping" parameterType="java.lang.Integer" resultType="BlogTags">
-		select name from tags AS T
+		select T.id, T.name from tags AS T
 		JOIN blog_tags_map AS BT ON T.id = BT.tid
 		WHERE BT.bid=#{blogId}
 	</select>

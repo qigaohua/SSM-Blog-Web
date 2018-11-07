@@ -67,6 +67,20 @@
 		select count(id) from blog where blogType_id=#{blogTypeId}
 	</select>
 	
+	<select id="getTagsBlogsOfPage" parameterType="Map" resultMap="blogResultMap">
+		SELECT B.id, B.title, B.summary, B.releaseDate, B.updateDate, B.clickHit, B.likes, B.blogType_id FROM blog AS B
+			JOIN blog_tags_map AS BT ON B.id = BT.bid
+			WHERE BT.tid=#{tagsId}
+			ORDER BY releaseDate DESC limit #{start}, #{end}
+	</select>
+	
+	<select id="getTagsBlogTotal" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT COUNT(B.id) FROM blog AS B
+			JOIN blog_tags_map AS BT ON B.id = BT.bid
+			WHERE BT.tid=#{tagsId}
+	</select>
+	
+	
 	<!-- 根据id获取上一篇博客 -->
 	<select id="getPreBlogById" parameterType="java.lang.Integer" resultMap="blogResultMap">
 		select id, title from blog where id &lt; #{id} ORDER BY id DESC limit 1

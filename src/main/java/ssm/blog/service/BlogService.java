@@ -31,6 +31,11 @@ public interface BlogService {
 	/* 获取某个分类的博客数量 */
 	public Integer getClassifyBlogTotal(Integer blogTypeId);
 	
+	/* 按页获取某个标签的博客 */
+	public PageCommon<Blog> listTagsBlogs(PageCommon<Blog> pageCommon, Integer tagsId);
+	/* 获取某个标签的博客数量 */
+	public Integer getTagsBlogTotal(Integer tagsId);
+	
 	public List<Blog> listBlogOfClickhit();
 	public List<Blog> listBlogOfLikes();
 	

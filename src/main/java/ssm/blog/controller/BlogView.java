@@ -47,7 +47,7 @@ public class BlogView {
 	public ModelAndView name(Integer id) {
 		Blog blog = blogServiceImpl.getBlog(id);
 		List<BlogTags> blogTagsList = blogTagsServiceImpl.findBlogTagsMapping(id); 
-		
+			
 		/* 获取上一篇博客id, title */
 		Blog preBlog = blogServiceImpl.findPreBlog(id);
 		if (preBlog == null) {

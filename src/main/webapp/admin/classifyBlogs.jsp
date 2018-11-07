@@ -12,15 +12,15 @@
     <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
       <h3 class="blogtitle"><a href="${pageContext.request.contextPath}/blogview?id=${blog.id }" target="_blank">${blog.title }</a></h3>
       <span class="blogpic">
-  		<a href="/" title="">
+  		<a href="#" title="">
   			<img src="${pageContext.request.contextPath}/static/blogPages/images/blog${blog.id % 6 }.jpg" alt="">
   		</a>
   	  </span>
       <p class="blogtext">${blog.summary }</p>
       <div class="bloginfo">
         <ul>
-          <li class="author"><a href="/">FlyQi</a></li>
-          <li class="lmname"><a href="/">${blog.blogType.typeName }</a></li>
+          <li class="author"><a href="#">FlyQi</a></li>
+          <li class="lmname"><a href="${pageContext.request.contextPath}/listClassifyBlog?id=${blog.blogType.id }">${blog.blogType.typeName }</a></li>
           <li class="timer"><fmt:formatDate value="${blog.releaseDate }" pattern="yyyy-MM-dd" /></li>
           <li class="view"><span>${blog.clickHit }</span> 已阅读</li>
           <li class="like">${blog.likes }</li>

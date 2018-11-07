@@ -150,4 +150,19 @@ public class BlogServiceImpl implements BlogService {
 		return blogDao.getClassifyBlogTotal(blogTypeId);
 	}
 
+	public PageCommon<Blog> listTagsBlogs(PageCommon<Blog> pageCommon, Integer tagsId) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("tagsId", tagsId);
+		map.put("start", pageCommon.getStart());
+		map.put("end", pageCommon.getEnd());
+		
+		pageCommon.setResult(blogDao.getTagsBlogsOfPage(map));
+		return pageCommon;
+	}
+
+	public Integer getTagsBlogTotal(Integer tagsId) {
+		return blogDao.getTagsBlogTotal(tagsId);
+	}
+
 }

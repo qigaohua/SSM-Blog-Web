@@ -75,7 +75,7 @@
       <h2 class="hometitle">标签云</h2>
       <ul>
       	<c:forEach items="${blogTagsList }" var="blogTags">
-      		<a href="#">${blogTags.name }(${blogTags.number })</a> 
+      		<a href="${pageContext.request.contextPath}/listTagsBlog?tagsId=${blogTags.id }">${blogTags.name }(${blogTags.number })</a> 
       	</c:forEach>
 <!--         <a href="#">陌上花开</a> 
         <a href="#">校园生活</a> 

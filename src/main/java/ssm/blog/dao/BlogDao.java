@@ -40,6 +40,12 @@ public interface BlogDao {
 	/* 获取某一分类的所有博客数量 */
 	public Integer getClassifyBlogTotal(Integer blogTypeId);
 	
+	/* 获取某一标签的所有博客, 按页获取 */
+	public List<Blog> getTagsBlogsOfPage(Map<String, Object> map);
+	/* 获取某一标签的所有博客数量 */
+	public Integer getTagsBlogTotal(Integer tagsId);
+	
+	
 	/* 根据点击量获取博客  */
 	public List<Blog> getBlogsByClickhit();
 	/* 根据点赞数量(likes字段)获取博客  */

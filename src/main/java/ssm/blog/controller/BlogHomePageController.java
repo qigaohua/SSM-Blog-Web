@@ -9,15 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler;
 
-import com.alibaba.druid.stat.TableStat.Mode;
-import com.mysql.cj.Session;
 
 import ssm.blog.entity.Blog;
 import ssm.blog.entity.BlogTags;
@@ -119,6 +115,12 @@ public class BlogHomePageController {
 		return "homepage";
 	}
 	
+	/**
+	 * @Desc  展示分类博客
+	 * @param page
+	 * @param blogTypeId
+	 * @return
+	 */
 	@RequestMapping(value="/listClassifyBlog")
 	public ModelAndView listClassify(@RequestParam(value="page", defaultValue="1") String page,
 									 @RequestParam(value="id") Integer blogTypeId) {
@@ -138,6 +140,30 @@ public class BlogHomePageController {
 		modelAndView.addObject("blogTypeId", blogTypeId);
 
 		modelAndView.setViewName("classifyBlogs");
+		
+		return modelAndView;
+	}
+	
+	
+	@RequestMapping(value="/listTagsBlog")
+	public ModelAndView listTags(@RequestParam(value="page", defaultValue="1") String page,
+			                     @RequestParam(value="tagsId") Integer tagsId) {
+		
+		ModelAndView modelAndView = new ModelAndView();
+		PageCommon<Blog> pageCommon = new PageCommon<Blog>(Integer.parseInt(page), 5);
+		
+		/* 按页获取博客信息 */
+		pageCommon = blogServiceImpl.listTagsBlogs(pageCommon, tagsId);
+		/* 获取某个类别博客总数 */
+		pageCommon.setTotal((long)blogServiceImpl.getTagsBlogTotal(tagsId));
+		/* 得到总的页数，方便web页面分页  */
+		Integer total = (int) ((pageCommon.getTotal() + pageCommon.getPageSize() - 1) / pageCommon.getPageSize());
+		pageCommon.setTotalPage(total);
+		
+		modelAndView.addObject("tagsBlogPage", pageCommon);
+		modelAndView.addObject("tagsId", tagsId);
+
+		modelAndView.setViewName("tagsBlogs");
 		
 		return modelAndView;
 	}
