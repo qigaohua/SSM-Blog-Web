@@ -34,4 +34,10 @@ public interface IBlogTagsDao {
 	
 	/* 获取标签总数量 */
 	public Long getTagsTotal();
+	
+	/* 根据标签id 使 标签引用数量加一 */
+	public Integer addTagsNumber(Integer tagsId);
+	
+	/* 根据博客id 使博客对应的所有标签都减去1 */
+	public Integer subTagsNumber(Integer blogId);
 }

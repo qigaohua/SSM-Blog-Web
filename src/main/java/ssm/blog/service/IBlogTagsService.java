@@ -23,4 +23,8 @@ public interface IBlogTagsService {
 	public List<BlogTags> findBlogTagsMapping(Integer blogId);
 	
 	public PageCommon<BlogTags> getTagsByPage(PageCommon<BlogTags> pageCommon);
+	
+	public Integer addBlogTagsNumber(Integer tagsId);
+	
+	public Integer subBlogTagsNumber(Integer blogId);
 }

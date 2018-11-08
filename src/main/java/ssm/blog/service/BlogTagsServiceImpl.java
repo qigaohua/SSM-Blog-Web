@@ -51,4 +51,12 @@ public class BlogTagsServiceImpl implements IBlogTagsService {
 		return blogTagsDao.deleteBlogTags(id);
 	}
 
+	public Integer addBlogTagsNumber(Integer tagsId) {
+		return blogTagsDao.addTagsNumber(tagsId);
+	}
+
+	public Integer subBlogTagsNumber(Integer blogId) {
+		return blogTagsDao.subTagsNumber(blogId);
+	}
+
 }

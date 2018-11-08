@@ -101,8 +101,13 @@ public class BlogController {
 			
 			// TODO 需要删除博客下的评论
 			blogServiceImpl.deleteBlog(id);
+					
+			// 使对应标签引用数量减去1
+			blogTagsServiceImpl.subBlogTagsNumber(id);
+			
 			// 删除博客标签映射表中数据
 			blogTagsServiceImpl.delBlogTagsMapping(id);
+
 		}
 		
 		JSONObject result = new JSONObject();
@@ -136,11 +141,13 @@ public class BlogController {
 			if (ret > 0) {
 				Integer blogId = blog.getId();
 				
-				blogTagsServiceImpl.delBlogTagsMapping(blogId);
+				blogTagsServiceImpl.subBlogTagsNumber(blogId);
+				blogTagsServiceImpl.delBlogTagsMapping(blogId);			
 				String[] tagsArray = blog.getTags().split(",");
 				for (String tagsId: tagsArray) {
 					Integer tid = Integer.parseInt(tagsId);
 					ret = blogTagsServiceImpl.addBlogTagsMapping(blogId, tid);
+					blogTagsServiceImpl.addBlogTagsNumber(tid);
 				}
 			}
 		}
@@ -153,6 +160,7 @@ public class BlogController {
 				for (String tagsId: tagsArray) {
 					Integer tid = Integer.parseInt(tagsId);
 					ret = blogTagsServiceImpl.addBlogTagsMapping(blogId, tid);
+					blogTagsServiceImpl.addBlogTagsNumber(tid);
 				}
 			}
 		}

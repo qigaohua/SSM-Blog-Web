@@ -46,4 +46,14 @@
 		select count(id) from tags
 	</select>
 	
+	<update id="addTagsNumber" parameterType="java.lang.Integer">
+		update tags set number = number + 1 where id=#{tagsId}
+	</update>
+	
+	<update id="subTagsNumber" parameterType="java.lang.Integer">
+		UPDATE tags T JOIN blog_tags_map BT ON T.id = BT.tid 
+		SET T.number = T.number - 1 
+		WHERE BT.bid = #{blogId}
+	</update>
+	
 </mapper>

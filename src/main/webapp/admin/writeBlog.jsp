@@ -54,12 +54,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             //博客关键词
            /* var keyWord = $("#keyWord").val();  */
             /* var checkedNum = $("input[name='tags']:checked").length; */
+            // 博客标签
            	var tags = $.makeArray($("input[name='tags']:checked"));
            	var tagsArray = []
            	for (var i in tags)
            		tagsArray.push(tags[i].value);
            	var tagsStr = tagsArray.join(",");
-           	alert(tagsStr);
             //获取博客内容  不带标签 纯文本
             var contentNoTag = UE.getEditor('editor').getContentTxt();
             //校验
