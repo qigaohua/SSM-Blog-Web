@@ -4,6 +4,18 @@
 
 <mapper namespace="ssm.blog.dao.IBlogTagsDao" >
 
+	<insert id="insertBlogTags" parameterType="BlogTags" >
+		insert into tags (name, number) values (#{name}, #{number})
+	</insert>
+
+	<update id="updateBlogTags" parameterType="BlogTags" >
+		update tags set name=#{name}, number=#{number} where id=#{id}
+	</update>
+	
+	<delete id="deleteBlogTags" parameterType="java.lang.Integer">
+		delete from tags where id=#{id} and number = 0
+	</delete>
+
 	<select id="selectAllBlogTags" resultType="BlogTags" >
 		select id, name, number from tags
 	</select>
@@ -24,6 +36,14 @@
 		select T.id, T.name from tags AS T
 		JOIN blog_tags_map AS BT ON T.id = BT.tid
 		WHERE BT.bid=#{blogId}
+	</select>
+	
+	<select id="getTagsByPage" resultType="BlogTags">
+		select * from tags limit #{start}, #{end}
+	</select>
+	
+	<select id="getTagsTotal" resultType="Long">
+		select count(id) from tags
 	</select>
 	
 </mapper>

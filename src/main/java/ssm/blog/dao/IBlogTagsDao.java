@@ -7,6 +7,16 @@ import org.apache.ibatis.annotations.Param;
 import ssm.blog.entity.BlogTags;
 
 public interface IBlogTagsDao {
+	
+	/* 添加一个博客标签 */
+	public Integer insertBlogTags(BlogTags blogTags);
+	
+	/* 更新一个博客标签 */
+	public Integer updateBlogTags(BlogTags blogTags);
+	
+	/* 删除一个博客标签 */
+	public Integer deleteBlogTags(Integer id);
+	
 	/* 获取所有的标签 */
 	public List<BlogTags> selectAllBlogTags();
 	
@@ -18,4 +28,10 @@ public interface IBlogTagsDao {
 	
 	/* 根据博客id 查找博客信息到博客与标签的映射*/
 	public List<BlogTags> selectBlogTagsMapping(@Param("blogId") Integer blogId);
+	
+	/* 分页获取所有的标签 */
+	public List<BlogTags> getTagsByPage(@Param("start") Integer start, @Param("end") Integer end);
+	
+	/* 获取标签总数量 */
+	public Long getTagsTotal();
 }
