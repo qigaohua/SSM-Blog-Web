@@ -49,4 +49,7 @@ public interface BlogService {
 	
 	/* 增加浏览量 +1 */
 	public Integer addBlogClickhit(Integer id);
+	
+	/* 从标题、正文模糊搜索  */
+	public List<Blog> searchBlogs(String searchValue);
 }

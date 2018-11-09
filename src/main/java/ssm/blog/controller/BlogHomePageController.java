@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -191,7 +192,7 @@ public class BlogHomePageController {
 	/**
 	 * @Desc  页面关于我功能， 显示个人信息
 	 * @return
-	 */
+	 */ 
 	@RequestMapping(value="about")
 	public String aboutMe() {
 		return "about";
@@ -205,6 +206,20 @@ public class BlogHomePageController {
 	@RequestMapping(value="/leaveWord")
 	public String leaveWordForMe() {
 		return "leaveWord";
+	}
+	
+	
+	@RequestMapping(value="/searchBlogs", method = RequestMethod.POST)
+	public ModelAndView serachKeyword(@RequestParam(value="searchValue") String keyword, HttpServletRequest request) {
+		
+		List<Blog> blogsList = blogServiceImpl.searchBlogs(keyword); 
+
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("blogsList", blogsList);
+		modelAndView.setViewName("searchBlog");
+		
+		return modelAndView;
 	}
 	
 }

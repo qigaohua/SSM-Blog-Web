@@ -120,5 +120,11 @@
 	<update id="updateBlogclickHit" parameterType="java.lang.Integer">
 		update blog set clickHit=clickHit+1 where id=#{id}
 	</update>
+	
+	<!--从标题、正文模糊搜索匹配的博客  --> 
+	<select id="selectBlogsByTitleAndContent" parameterType="String" resultMap="blogResultMap" >
+		SELECT id, title, summary, releaseDate, updateDate, clickHit, likes, blogType_id
+		 FROM blog WHERE POSITION(#{searchValue} IN title) OR POSITION(#{searchValue} IN content)
+	</select>
 
 </mapper>

@@ -165,4 +165,8 @@ public class BlogServiceImpl implements BlogService {
 		return blogDao.getTagsBlogTotal(tagsId);
 	}
 
+	public List<Blog> searchBlogs(String searchValue) {
+		return blogDao.selectBlogsByTitleAndContent(searchValue);
+	}
+
 }

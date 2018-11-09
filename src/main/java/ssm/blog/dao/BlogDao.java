@@ -61,4 +61,7 @@ public interface BlogDao {
 	
 	/* 根据id更新blog点击量+1 */
 	public Integer updateBlogclickHit(@Param("id") Integer id);
+	
+	/* 从标题、正文模糊搜索  */
+	public List<Blog> selectBlogsByTitleAndContent(String searchValue);
 }
