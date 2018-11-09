@@ -66,7 +66,7 @@ public class BlogView {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("Blog", blog);
-		modelAndView.addObject("blogTagsList", blogTagsList);
+		modelAndView.addObject("tagsList", blogTagsList);
 		
 		modelAndView.addObject("preBlog", preBlog);
 		modelAndView.addObject("afterBlog", afterBlog);

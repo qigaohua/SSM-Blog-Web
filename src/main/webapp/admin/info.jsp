@@ -64,7 +64,7 @@
         </ul>
       </div>
       <div class="tags">
-        <c:forEach items="${blogTagsList }" var="blogTags">
+        <c:forEach items="${tagsList }" var="blogTags">
         	<a href="${pageContext.request.contextPath}/listTagsBlog?tagsId=${blogTags.id }" target="_blank">${blogTags.name }</a> &nbsp;
       	</c:forEach>
 <!--       	<a href="/" target="_blank">个人博客</a> &nbsp; 
