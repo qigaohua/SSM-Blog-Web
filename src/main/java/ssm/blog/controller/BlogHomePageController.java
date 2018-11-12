@@ -209,6 +209,12 @@ public class BlogHomePageController {
 	}
 	
 	
+	/**
+	 * @Desc  Ò³ÃæËÑË÷¿ò¹¦ÄÜ
+	 * @param keyword
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value="/searchBlogs", method = RequestMethod.POST)
 	public ModelAndView serachKeyword(@RequestParam(value="searchValue") String keyword, HttpServletRequest request) {
 		
